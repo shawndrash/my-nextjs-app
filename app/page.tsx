@@ -21,10 +21,28 @@ function Counter() {
 }
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState('');
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Counter />
+        <div className="flex flex-col gap-2 w-64">
+          <label htmlFor="username" className="text-sm font-medium">
+            用户名
+          </label>
+          <input
+            id="username"
+            type="text"
+            placeholder="请输入用户名"
+            className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+        </div>
+        <div className="text-sm text-gray-600">
+          当前输入：{inputValue || '暂无输入'}
+        </div>
         <Image
           className="dark:invert"
           src="/next.svg"
